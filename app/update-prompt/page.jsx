@@ -15,10 +15,6 @@ const EditPrompt = () => {
     tag: "",
   });
 
-  if (!session) {
-    router.replace("/");
-  }
-
   useEffect(() => {
     const getPromptDetails = async () => {
       const response = await fetch(`/api/prompt/${promptId}`);
@@ -63,18 +59,13 @@ const EditPrompt = () => {
   };
 
   return (
-    <Fragment>
-      {!session && <p>Loading...</p>}
-      {session && (
-        <Form
-          type="Edit"
-          post={post}
-          setPost={setPost}
-          submitting={submitting}
-          handleSubmit={updatePrompt}
-        />
-      )}
-    </Fragment>
+    <Form
+      type="Edit"
+      post={post}
+      setPost={setPost}
+      submitting={submitting}
+      handleSubmit={updatePrompt}
+    />
   );
 };
 

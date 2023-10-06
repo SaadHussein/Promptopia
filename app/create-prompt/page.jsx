@@ -13,10 +13,6 @@ const CreatePrompt = () => {
     tag: "",
   });
 
-  if (!session) {
-    router.replace("/");
-  }
-
   const createPrompt = async (e) => {
     e.preventDefault();
     setSubmitting(true);
@@ -42,18 +38,13 @@ const CreatePrompt = () => {
   };
 
   return (
-    <Fragment>
-      {!session && <p>Loading...</p>}
-      {session && (
-        <Form
-          type="Create"
-          post={post}
-          setPost={setPost}
-          submitting={submitting}
-          handleSubmit={createPrompt}
-        />
-      )}
-    </Fragment>
+    <Form
+      type="Create"
+      post={post}
+      setPost={setPost}
+      submitting={submitting}
+      handleSubmit={createPrompt}
+    />
   );
 };
 
