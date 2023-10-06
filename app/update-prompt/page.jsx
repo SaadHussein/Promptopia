@@ -16,7 +16,7 @@ const EditPrompt = () => {
   });
 
   if (!session) {
-    router.push("/");
+    router.replace("/");
   }
 
   useEffect(() => {

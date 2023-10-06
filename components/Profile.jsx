@@ -8,7 +8,7 @@ const Profile = ({ name, desc, data, handleEdit, handleDelete }) => {
   const router = useRouter();
 
   if (!session) {
-    router.push("/");
+    router.replace("/");
   }
 
   return (

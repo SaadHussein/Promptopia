@@ -14,7 +14,7 @@ const CreatePrompt = () => {
   });
 
   if (!session) {
-    router.push("/");
+    router.replace("/");
   }
 
   const createPrompt = async (e) => {
@@ -40,6 +40,7 @@ const CreatePrompt = () => {
       setSubmitting(false);
     }
   };
+
   return (
     <Fragment>
       {!session && <p>Loading...</p>}
