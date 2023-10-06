@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { Fragment, useState } from "react";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import Form from "@components/Form";
@@ -13,7 +13,9 @@ const CreatePrompt = () => {
     tag: "",
   });
 
-  console.log(session);
+  if (!session) {
+    router.push("/");
+  }
 
   const createPrompt = async (e) => {
     e.preventDefault();
@@ -39,13 +41,18 @@ const CreatePrompt = () => {
     }
   };
   return (
-    <Form
-      type="Create"
-      post={post}
-      setPost={setPost}
-      submitting={submitting}
-      handleSubmit={createPrompt}
-    />
+    <Fragment>
+      {!session && <p>Loading...</p>}
+      {session && (
+        <Form
+          type="Create"
+          post={post}
+          setPost={setPost}
+          submitting={submitting}
+          handleSubmit={createPrompt}
+        />
+      )}
+    </Fragment>
   );
 };
 
